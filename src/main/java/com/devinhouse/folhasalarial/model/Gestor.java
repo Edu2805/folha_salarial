@@ -25,6 +25,7 @@ public class Gestor {
     @JoinColumn(name = "folha_salarial_id")
     FolhaSalarial folhaSalarial;
     @ManyToOne
+    @JoinColumn(name = "cargo_id")
     Cargo cargo;
 
 }

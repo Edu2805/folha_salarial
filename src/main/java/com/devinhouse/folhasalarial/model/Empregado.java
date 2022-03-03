@@ -24,7 +24,9 @@ public class Empregado {
     @JoinColumn(name = "folha_salarial_id")
     FolhaSalarial folhaSalarial;
     @ManyToOne
+    @JoinColumn(name = "cargo_id")
     Cargo cargo;
     @ManyToOne
+    @JoinColumn(name = "gestor_id")
     Gestor gestor;
 }

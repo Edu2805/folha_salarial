@@ -1,8 +1,13 @@
 package com.devinhouse.folhasalarial.controller;
 
+import com.devinhouse.folhasalarial.dto.GestorDto;
+import com.devinhouse.folhasalarial.model.Empregado;
+import com.devinhouse.folhasalarial.model.FolhaSalarial;
 import com.devinhouse.folhasalarial.model.Gestor;
 import com.devinhouse.folhasalarial.service.GestorService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -16,10 +21,19 @@ public class GestorController {
         this.gestorService = gestorService;
     }
 
-    @GetMapping
-    public List<Gestor> listaGestores(){
-        List<Gestor> gestor = gestorService.listaTodosGestores();
-        return gestor;
+//    @GetMapping
+//    public List<Gestor> listaGestores(){
+//        List<Gestor> gestor = gestorService.listaTodosGestores();
+//        return gestor;
+//    }
+
+    @GetMapping("/visualizar")
+    public ModelAndView listarEmpregados(){
+        List<Gestor> gestores = gestorService.listaTodosGestores();
+        ModelAndView mv = new ModelAndView("gestor/visualizar");
+
+        mv.addObject("gestores", gestores);
+        return mv;
     }
 
     @GetMapping(value = "/{id}")
@@ -29,7 +43,10 @@ public class GestorController {
     }
 
     @PostMapping
-    public Gestor adicionarGestor(@RequestBody Gestor gestor){
+    public Gestor adicionarGestor(@RequestBody GestorDto gestorDto){
+
+        var gestor = new Gestor();
+        BeanUtils.copyProperties(gestorDto, gestor);
         Gestor result = gestorService.adicionarGestor(gestor);
         return result;
     }

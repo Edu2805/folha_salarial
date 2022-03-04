@@ -6,6 +6,7 @@ import com.devinhouse.folhasalarial.repository.FolhaSalarialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +17,13 @@ public class FolhaService {
     //verificar
     private final List<FolhaSalarial> folhasSalariais = new ArrayList<>();
 
-    @Autowired
     public FolhaService(FolhaSalarialRepository folhaSalarialRepository) {
         this.folhaSalarialRepository = folhaSalarialRepository;
     }
 
     public List<FolhaSalarial> listaTodasFolhas(){
+        FolhaSalarial percentuaisFolha = new FolhaSalarial();
+
         return (List<FolhaSalarial>) folhaSalarialRepository.findAll();
     }
 

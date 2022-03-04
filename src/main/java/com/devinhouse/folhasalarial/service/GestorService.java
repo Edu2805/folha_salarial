@@ -15,7 +15,6 @@ public class GestorService {
     //verificar
     private final List<Gestor> gestores = new ArrayList<>();
 
-    @Autowired
     public GestorService(GestorRepository gestorRepository) {
         this.gestorRepository = gestorRepository;
     }

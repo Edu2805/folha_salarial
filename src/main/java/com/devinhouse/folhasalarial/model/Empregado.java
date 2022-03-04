@@ -1,9 +1,6 @@
 package com.devinhouse.folhasalarial.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -18,8 +15,13 @@ public class Empregado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 60)
     private String nome;
+
+    @Column(nullable = false, unique = true, length = 11)
     private String cpf;
+
     @ManyToOne
     @JoinColumn(name = "folha_salarial_id")
     FolhaSalarial folhaSalarial;

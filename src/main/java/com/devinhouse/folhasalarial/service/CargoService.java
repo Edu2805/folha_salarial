@@ -14,7 +14,6 @@ public class CargoService {
     private final CargoRepository cargoRepository;
     private final List<Cargo> cargos = new ArrayList<>();
 
-    @Autowired
     public CargoService(CargoRepository cargoRepository) {
         this.cargoRepository = cargoRepository;
     }

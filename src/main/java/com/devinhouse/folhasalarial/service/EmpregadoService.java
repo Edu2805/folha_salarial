@@ -5,6 +5,7 @@ import com.devinhouse.folhasalarial.repository.EmpregadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class EmpregadoService {
     private final EmpregadoRepository empregadoRepository;
     private final List<Empregado> empregados = new ArrayList<>();
 
-    @Autowired
     public EmpregadoService(EmpregadoRepository empregadoRepository) {
         this.empregadoRepository = empregadoRepository;
     }
@@ -43,4 +43,5 @@ public class EmpregadoService {
     public void excluirEmpregado(Empregado empregado){
         empregadoRepository.delete(empregado);
     }
+
 }

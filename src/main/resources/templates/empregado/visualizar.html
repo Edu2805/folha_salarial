@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Lista de empregados</title>
+</head>
+<body>
+<h1>Lista de empregados</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">CARGO</th>
+        <th scope="col">GESTOR</th>
+        <th scope="col">SALÁRIO</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empregado : ${empregados}">
+        <th class="col-1" scope="row" th:text="${empregado.id}">ID</th>
+        <td class="col-4" th:text="${empregado.nome}">Nome</td>
+        <td class="col-4" th:text="${empregado.cpf}">CPF</td>
+        <td class="col-4" th:text="${empregado.getCargo().getNome()}">Cargo</td>
+        <td class="col-4" th:text="${empregado.getGestor().getNome()}">Gestor</td>
+        <td class="col-4" th:text="${empregado.getFolhaSalarial().getSalario()}">Salário</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a href="/gestor/visualizar"/><button type="button" class="btn btn-primary">Gestor</button>
+    <a href="/cargo/visualizar"/><button type="button" class="btn btn-primary">Cargo</button>
+    <a href="/folha/visualizar"/><button type="button" class="btn btn-primary">Folha</button>
+</div>
+</body>
